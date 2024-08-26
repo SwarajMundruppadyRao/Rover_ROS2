@@ -1,0 +1,644 @@
+<?xml version="1.0" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ugv" xmlns:xacro="http://ros.org/wiki/xacro">
+  # Add this before base link
+  <link name="dummy_link"></link>
+  <link
+    name="chassis">
+    <inertial>
+      <origin
+        xyz="-0.295351016402605 0.0381986545854694 0.377264589645654"
+        rpy="0 0 0" />
+      <mass
+        value="7.18067665854969" />
+      <inertia
+        ixx="0.49093130800591"
+        ixy="1.86706756377394E-16"
+        ixz="5.63268612971712E-18"
+        iyy="0.137776785797115"
+        iyz="1.6051531462148E-17"
+        izz="0.613037956187655" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/chassis.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/chassis.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  # Add this after base link
+  <joint name="dummy_joint" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <parent link="dummy_link"/>
+      <child link="chassis"/>
+  </joint>
+  <link
+    name="rear_left">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-17 -2.77555756156289E-17 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.71878650896439" />
+      <inertia
+        ixx="0.00779070577470346"
+        ixy="7.61932300280781E-20"
+        ixz="1.0842021724855E-19"
+        iyy="0.0130009662808401"
+        iyz="-7.98740611866469E-19"
+        izz="0.00779070577470346" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/rear_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/rear_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_rear"
+    type="continuous">
+    <origin
+      xyz="-0.10485 -0.21361 0.10541"
+      rpy="3.1416 -0.097692 -1.5708" />
+    <parent
+      link="chassis" />
+    <child
+      link="rear_left" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="100"
+      velocity="1000" />
+  </joint>
+  <link
+    name="rear_right">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -1.11022302462516E-16 -1.38777878078145E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.71878650896439" />
+      <inertia
+        ixx="0.00779070577470345"
+        ixy="6.64693132978958E-20"
+        ixz="-1.0842021724855E-19"
+        iyy="0.0130009662808401"
+        iyz="-7.97463319218257E-19"
+        izz="0.00779070577470345" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/rear_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/rear_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_rear"
+    type="continuous">
+    <origin
+      xyz="-0.48585 -0.21361 0.10541"
+      rpy="3.1416 -0.097692 -1.5708" />
+    <parent
+      link="chassis" />
+    <child
+      link="rear_right" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="100"
+      velocity="1000" />
+  </joint>
+  <link
+    name="right_steering">
+    <inertial>
+      <origin
+        xyz="-6.66133814775094E-16 0.091772192868872 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0352519176927693" />
+      <inertia
+        ixx="8.75993091027361E-05"
+        ixy="-1.38052952375192E-18"
+        ixz="-1.26163731006246E-20"
+        iyy="3.76990429371061E-05"
+        iyz="2.60052862934485E-20"
+        izz="0.000113965194635327" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/right_steering.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/right_steering.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="steering_right"
+    type="revolute">
+    <origin
+      xyz="-0.48585 0.29439 0.10481"
+      rpy="1.5708 0 0" />
+    <parent
+      link="chassis" />
+    <child
+      link="right_steering" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.785"
+      upper="0.785"
+      effort="100"
+      velocity="1000" />
+  </joint>
+  <link
+    name="front_right">
+    <inertial>
+      <origin
+        xyz="0.000488710675398407 0.000126999999999933 0.000355021034705444"
+        rpy="0 0 0" />
+      <mass
+        value="2.71878650896439" />
+      <inertia
+        ixx="0.00779070577470346"
+        ixy="-3.19578067070424E-20"
+        ixz="8.67361737988404E-19"
+        iyy="0.0130009662808401"
+        iyz="1.09613430349234E-20"
+        izz="0.00779070577470346" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/front_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/front_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0.628254169966961 1.5707963267949" />
+    <parent
+      link="right_steering" />
+    <child
+      link="front_right" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="100"
+      velocity="1000" />
+  </joint>
+  <link
+    name="left_steering">
+    <inertial>
+      <origin
+        xyz="4.16333634234434E-17 0.0917721928688729 5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0352519176927688" />
+      <inertia
+        ixx="8.75993091027333E-05"
+        ixy="-9.00416232195286E-21"
+        ixz="-2.74968374501529E-20"
+        iyy="3.76990429371048E-05"
+        iyz="7.15760169271552E-21"
+        izz="0.000113965194635324" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/left_steering.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/left_steering.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="steering_left"
+    type="revolute">
+    <origin
+      xyz="-0.10485 0.29439 0.10481"
+      rpy="1.5708 0 0" />
+    <parent
+      link="chassis" />
+    <child
+      link="left_steering" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.785"
+      upper="0.785"
+      effort="100"
+      velocity="1000" />
+  </joint>
+  <link
+    name="front_left">
+    <inertial>
+      <origin
+        xyz="0.000488710675398407 0.000127000000000016 0.000355021034705444"
+        rpy="0 0 0" />
+      <mass
+        value="2.71878650896439" />
+      <inertia
+        ixx="0.00779070577470346"
+        ixy="-1.36690043525687E-20"
+        ixz="0"
+        iyy="0.0130009662808401"
+        iyz="1.29501852114943E-19"
+        izz="0.00779070577470346" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/front_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/front_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0.62825 1.5708" />
+    <parent
+      link="left_steering" />
+    <child
+      link="front_left" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="100"
+      velocity="1000" />
+  </joint>
+  <link
+    name="lidar_mount">
+    <inertial>
+      <origin
+        xyz="0 -0.1905 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.137841662368809" />
+      <inertia
+        ixx="0.00167438377979847"
+        ixy="-1.07408904533029E-36"
+        ixz="-7.07568541060799E-39"
+        iyy="1.38953010771657E-05"
+        iyz="-9.54553446893848E-37"
+        izz="0.00167438377979847" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.3"
+        rpy="-1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/lidar_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/lidar_mount.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mount"
+    type="fixed">
+    <origin
+      xyz="-0.295351016402606 0.0403932611739606 0.53241"
+      rpy="0 0 0" />
+    <parent
+      link="chassis" />
+    <child
+      link="lidar_mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <ros2_control name="GazeboSystem" type="system">
+  <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+
+  # Velocity Controllers
+
+  <joint name="right_rear">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="left_rear">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+   <joint name="right_front">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+   <joint name="left_front">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  # Position Controller
+  
+  <joint name="steering_right">
+      <command_interface name="position">
+          <param name="min">-0.785</param>
+          <param name="max">0.785</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="steering_left">
+      <command_interface name="position">
+          <param name="min">-0.785</param>
+          <param name="max">0.785</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  </ros2_control>
+
+
+  <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+          <parameters>$(find ugv)/config/control.yaml</parameters>
+      </plugin>
+  </gazebo>
+
+<gazebo reference="lidar_mount">
+  <sensor name="lidar" type="ray">
+    <pose>0.0 0.0 15.0 0 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>lidar_mount</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo reference="chassis">
+  <gravity>true</gravity>
+  <sensor name="imu_sensor" type="imu">
+    <always_on>true</always_on>
+    <update_rate>100</update_rate>
+    <visualize>true</visualize>
+    <topic>__default_topic__</topic>
+    <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+      <topicName>imu</topicName>
+      <bodyName>chassis</bodyName>
+      <updateRateHZ>10.0</updateRateHZ>
+      <gaussianNoise>0.0</gaussianNoise>
+      <xyzOffset>0 0 0</xyzOffset>
+      <rpyOffset>0 0 0</rpyOffset>
+      <frameName>chassis</frameName>
+      <initialOrientationAsReference>false</initialOrientationAsReference>
+    </plugin>
+    <pose>0 0 0 0 0 0</pose>
+  </sensor>
+  </gazebo>
+
+  <xacro:macro name="body_color">
+    <visual>
+    <material>
+        <ambient>1 0 0 1</ambient>
+        <diffuse>1 0 0 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>  
+  <gazebo reference="chassis">
+    <xacro:body_color />
+  </gazebo>
+
+  <xacro:macro name="wheel_color">
+    <visual>
+    <material>
+        <ambient>0.298039215686275 0.298039215686275 0.298039215686275 1</ambient>
+        <diffuse>0.298039215686275 0.298039215686275 0.298039215686275 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>  
+  <gazebo reference="rear_left">
+    <xacro:wheel_color />
+  </gazebo>
+    <gazebo reference="rear_right">
+    <xacro:wheel_color />
+  </gazebo>
+    <gazebo reference="front_left">
+    <xacro:wheel_color />
+  </gazebo>
+    <gazebo reference="front_right">
+    <xacro:wheel_color />
+  </gazebo>
+
+  <xacro:macro name="steering_color">
+    <visual>
+    <material>
+        <ambient>0.8 0.558823529411765 0.1 1</ambient>
+        <diffuse>0.8 0.558823529411765 0.1 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>  
+  <gazebo reference="left_steering">
+    <xacro:steering_color />
+  </gazebo>
+    <gazebo reference="right_steering">
+    <xacro:steering_color />
+  </gazebo>
+
+  <xacro:macro name="lidar_color">
+    <visual>
+    <material>
+        <ambient>0.8 0.558823529411765 0.1 1</ambient>
+        <diffuse>0.8 0.558823529411765 0.1 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>  
+  <gazebo reference="lidar_mount">
+    <xacro:lidar_color />
+  </gazebo>
+</robot>
