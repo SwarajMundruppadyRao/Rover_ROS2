@@ -2,6 +2,12 @@
 
 This project involves designing a custom rover in SOLIDWORKS, converting the model to URDF format, integrating a LIDAR sensor, and coding a proportional controller to enable the rover to navigate from point A to point B.
 
+
+## Dependencies 
+1. ROS2 - Galactic
+2. Gazebo
+3. RViz
+
 ## Videos
 
 ### Teleop Video
